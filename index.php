@@ -22,11 +22,7 @@ print 'Hello Word';
 
 $aluno = 'Vitor Castro';
 
-echo $aluno , 'éŽ o instrutor';
-
-
-
-
+echo $aluno , ' é o instrutor';
 
 ?>
 
