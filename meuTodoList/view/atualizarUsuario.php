@@ -1,7 +1,6 @@
 <?php include_once 'template/header.php'; ?>
 
 <?php 
-	
 include_once '../persistencia/conexaoBaseDados.php';
 
 $sql = 'SELECT * FROM usuario WHERE id="' . $_GET['id'] . '";';	
@@ -11,7 +10,6 @@ $query = mysql_query($sql);
 if ($query)
 {
 	$object = mysql_fetch_object($query);
-	
 }else
 	header("Location: visualizarTodosUsuario.php");
 ?>
@@ -26,7 +24,6 @@ if ($query)
 
 <label>Senha:</label>
 <input type="password" name="senha" title="Senha" value="<?php echo $object->senha; ?>">
-
 <br>
 
 <input type="hidden" name="id" value="<?php echo $object->id; ?>">

@@ -22,3 +22,22 @@ CREATE TABLE `usuario` (
 `email` VARCHAR( 60 ) NOT NULL ,
 `senha` VARCHAR( 30 ) NOT NULL
 ) ENGINE = InnoDB;
+
+-- Apaga a tabela Tarefa
+DROP TABLE tarefa;
+
+-- Cria a tabela tarefa
+CREATE TABLE `tarefa` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`idUsuario` INT NOT NULL ,
+`titulo` VARCHAR( 200 ) NOT NULL ,
+`detalhe` TEXT NOT NULL ,
+`prioridade` INT NOT NULL ,
+`anexo` INT NOT NULL
+) ENGINE = InnoDB;
+
+-- cria indice para a coluna idUsuario
+ALTER TABLE `tarefa` ADD INDEX ( `idUsuario` ) ;
+
+-- cria chave estrangeira com a tabela usuario
+ALTER TABLE `tarefa` ADD FOREIGN KEY ( `idUsuario` ) REFERENCES `usuario` (`id`);

@@ -1,16 +1,30 @@
 <?php
-include_once '../persistencia/conexaoBaseDados.php';
+include_once '../persistencia/UsuarioDao.php';
+include_once '../entidade/Usuario.php';
+include_once '../biblioteca/Redirect.php';
+
 
 if (isset($_POST['NovoUsuario']))
 {
-	$sql = 'INSERT INTO usuario(email,senha) VALUES("' . $_POST['email'] . '","' . $_POST['senha'] . '");';
+	$usuario = new Usuario();
+	$usuario->setEmail($_POST['email']);
+	$usuario->setSenha($_POST['senha']);
+
+
+	$usuarioDao = new UsuarioDao();
+	$inserir = $usuarioDao->inserir($usuario);
 	
-	$query = mysql_query($sql,$conexao);
 	
-	if ($query)
-		header('Location: index.php');
+	//DML INSERT INTO <nomeTabela>[campo,] VALUES([valores,]);
+// 	$sql = 'INSERT INTO usuario(email,senha) 
+// 				VALUES("' . $_POST['email'] . '","' . $_POST['senha'] . '");';
+	
+// 	$query = mysql_query($sql,$conexao);
+	
+	if ($inserir)
+		Redirect::to('index');
 	else
-		header('Location: novoUsuario.php');
+		Redirect::to('novoUsuario');
 }
 
 ?>

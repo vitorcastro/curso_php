@@ -20,6 +20,11 @@ class ConexaoPDO
 		}
 	}
 	
+	public function getConexao()
+	{
+		return $this->conexao;
+	}
+	
 	private function getDsn()
 	{
 		return 'mysql:host=' . self::HOST . ';dbname=' . self::DATA_BASE;
