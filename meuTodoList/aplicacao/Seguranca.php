@@ -1,12 +1,18 @@
 <?php
 include_once '../../biblioteca/Redirect.php';
 
+/**
+ * @author vitorcastro
+ * Classe responsável pela Segurança da aplicação
+ */
 class Seguranca
 {
+	// O metódo faz uma verifação simples se o usuário tem a variavel de $_SESSION (está logado)
+	// e caso não tenha redireciona para a página de login
 	public static function usuarioLogado()
 	{
 		if (!isset($_SESSION['email'])){
-			Redirect::to('../index');
+			Redirect::to('../login');
 		}
 	}
 	

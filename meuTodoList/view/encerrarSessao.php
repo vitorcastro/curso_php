@@ -1,8 +1,8 @@
 <?php
+include_once '../biblioteca/IncludeFile.php';
+IncludeFile::load('aplicacao/Facade');
 
-session_start();
-session_destroy();
-
-header("Location: index.php");
+$facade = new Facade();
+$facade->realizarLogout();
 
 ?>

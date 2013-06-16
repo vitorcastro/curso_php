@@ -1,7 +1,18 @@
 <?php include_once 'template/header.php'; ?>
+<?php 
+include_once '../biblioteca/IncludeFile.php';
+IncludeFile::load('aplicacao/Facade');
+
+$facade = new Facade();
+
+$facade->realizarLogin();
+
+// Notem que a ação (action) do formulário irá encaminhar os dados por POST para mesma página,
+// fazendo com que método chamada pelo Facade capture as informação e realize o login caso as informações estejam corretas
+?>
+
 
 <style>
-
 	.form-signin {
 	max-width: 300px;
 	padding: 19px 29px 29px;
@@ -31,7 +42,7 @@
 
 
 
-<form class="form-signin" method="post" action="processaLogin.php">
+<form class="form-signin" method="post" action="login.php">
 <h2 class="form-signin-heading">Login</h2>
 <input class="input-block-level" type="text" name="email" placeholder="Email">
 <input class="input-block-level" type="password" name="senha" placeholder="Password">

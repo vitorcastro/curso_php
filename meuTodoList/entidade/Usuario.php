@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author vitorcastro
+ * Classe representa a tabela(usuario) do banco da dados 
+ */
 class Usuario
 {
 	private $id;

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author vitorcastro
+ * Classe representa a tabela(tarefa) do banco da dados
+ */
 class Tarefa
 {
 	private $id;

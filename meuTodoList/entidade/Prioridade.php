@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author vitorcastro
+ * Classe representa quais a possibilidade de prioridade de tarefa
+ */
 class Prioridade
 {
 	const ALTA = 3;

@@ -10,10 +10,10 @@ class TarefaDao
 		$sql = 'INSERT INTO tarefa(idUsuario,titulo,detalhe,prioridade) VALUES(?,?,?,?);';
 		$dao->prepare($sql);
 		
-		$dao->setParam(1, $tarefa->getIdUsuario());
-		$dao->setParam(2, $tarefa->getTitulo());
-		$dao->setParam(3, $tarefa->getDetalhe());
-		$dao->setParam(4, $tarefa->getPrioridade());
+		$dao->setParam($tarefa->getIdUsuario());
+		$dao->setParam($tarefa->getTitulo());
+		$dao->setParam($tarefa->getDetalhe());
+		$dao->setParam($tarefa->getPrioridade());
 		
 		return $dao->executeQuery();
 	}
@@ -25,7 +25,7 @@ class TarefaDao
 		
 		$dao->prepare($sql);
 		
-		$dao->setParam(1, $idUsuario);
+		$dao->setParam($idUsuario);
 		
 		return $dao->getList('Tarefa');
 	}
@@ -33,15 +33,20 @@ class TarefaDao
 	public function buscarTodasPorPesquisa(Tarefa $tarefa)
 	{
 		$dao = new DataAccessObject();
+		// o operador LIKE significa parecido com e o % indica que pode ocorrer qualquer string antes ou depois no caso:
+		// LIKE %TESTE%
+		// LIKE TESTE% , significa o que vai ser buscado todas as strings que iniciam com a palavra TESTE.
+		// LIKE %TESTE , significa o que vai ser buscado todas as strings que finalizam com a palavra TESTE.
+		
 		$sql = 'SELECT id,titulo,detalhe,prioridade FROM tarefa 
-					WHERE idUsuario = ? AND (titulo LIKE ? OR detalhe LIKE ?) ORDER BY prioridade DESC';
+					WHERE idUsuario = ? AND (titulo LIKE ? OR detalhe LIKE ?) 
+					ORDER BY prioridade DESC';
 	
 		$dao->prepare($sql);
 	
-		$dao->setParam(1, $tarefa->getIdUsuario());
-		$dao->setParam(2, '%' . $tarefa->getTitulo() . '%');
-		$dao->setParam(3, '%' . $tarefa->getDetalhe() . '%');
-		
+		$dao->setParam($tarefa->getIdUsuario());
+		$dao->setParam('%' . $tarefa->getTitulo() . '%');
+		$dao->setParam('%' . $tarefa->getDetalhe() . '%');
 	
 		return $dao->getList('Tarefa');
 	}

@@ -2,18 +2,29 @@
 
 include_once 'DataAccessObject.php';
 
-
+/**
+ * @author vitorcastro
+ * Classe com a responsabilidade de realizar todas as funções que envolvam acesso ao banco de dados relacionado a entidade tabela usuario
+ * A classe faz parte da camada de acesso a dados
+ */
 class UsuarioDao
 {
 	public function inserir(Usuario $usuario)
 	{
+		//Usa o objeto DataAccessObject para preparar e executar o comando SQL
 		$dao = new DataAccessObject();
 
-		$sql = 'INSERT INTO usuario(email,senha) VALUES(:email,:senha);';
+		// cada (?) no sql irá simbolizar que haverá um parametro a ser passado  
+		$sql = 'INSERT INTO usuario(email,senha) VALUES(?,?);';
 		$dao->prepare($sql);
+		// está setando os parametros indicados no SQL 
+		// OBS: a ordem da chamada do método setParam deve ser na mesma ordem das (?) 
+		// Se invertessemos a ordem da senha com o email o SQL iria inserir a senha no campo email e o email no campo senha
+		// Ex: $dao->setParam($usuario->getSenha());
+		// 	   $dao->setParam($usuario->getEmail());
 		
-		$dao->setParam(':email', $usuario->getEmail());
-		$dao->setParam(':senha', $usuario->getSenha());
+		$dao->setParam($usuario->getEmail());
+		$dao->setParam($usuario->getSenha());
 		
 		return $dao->executeQuery();
 	}
@@ -25,9 +36,9 @@ class UsuarioDao
 		$sql = 'UPDATE usuario SET email = ?, senha = ? WHERE id = ?';
 		$dao->prepare($sql);
 		
-		$dao->setParam(1, $usuario->getEmail());
-		$dao->setParam(2, $usuario->getSenha());
-		$dao->setParam(3, $usuario->getId());
+		$dao->setParam($usuario->getEmail());
+		$dao->setParam($usuario->getSenha());
+		$dao->setParam($usuario->getId());
 		
 		return $dao->executeQuery();
 	}
@@ -39,8 +50,8 @@ class UsuarioDao
 		
 		$dao->prepare($sql);
 		
-		$dao->setParam(1, $usuario->getEmail());
-		$dao->setParam(2, $usuario->getSenha());
+		$dao->setParam($usuario->getEmail());
+		$dao->setParam($usuario->getSenha());
 		
 		return $dao->getObject('Usuario');
 	}
@@ -49,10 +60,19 @@ class UsuarioDao
 	{
 		$dao = new DataAccessObject();
 		$sql = 'SELECT id,email,senha FROM usuario';
-		
 		$dao->prepare($sql);
 		
 		return $dao->getList('Usuario');
+	}
+	
+	public function buscarPorId($id)
+	{
+		$dao = new DataAccessObject();
+		
+		$dao->prepare('SELECT id,email,senha FROM usuario WHERE id = ?');
+		$dao->setParam($id);
+		
+		return $dao->getObject('Usuario');
 	}
 	
 	public function excluirPorId($id)
@@ -62,7 +82,7 @@ class UsuarioDao
 		$sql = 'DELETE FROM usuario WHERE id = ?';
 		$dao->prepare($sql);
 		
-		$dao->setParam(1, $id);
+		$dao->setParam($id);
 		
 		return $dao->executeQuery();
 	}

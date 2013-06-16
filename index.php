@@ -1,0 +1,5 @@
+<?php
+// Função usada para redirecionar para a página inicial 
+// do aplicativo quando acessar a raiz do projeto
+header("Location: meuTodoList/view/index.php");
+?>
