@@ -14,8 +14,14 @@ class UsuarioDao
 		//Usa o objeto DataAccessObject para preparar e executar o comando SQL
 		$dao = new DataAccessObject();
 
-		// cada (?) no sql irá simbolizar que haverá um parametro a ser passado  
+		// cada (?) no sql irá simbolizar que haverá um parametro a ser passado
+		// criptografia do banco de dados AES_ENCRYPT(?,'chave');
+		// descriptografia AES_DECRYPT(?, 'chave');  
 		$sql = 'INSERT INTO usuario(email,senha) VALUES(?,?);';
+		
+		//SQL com criptografia do Banco de dados
+// 		$sql = 'INSERT INTO usuario(email,senha) VALUES(?,AES_ENCRYPT(?,"@chave@"));';
+		
 		$dao->prepare($sql);
 		// está setando os parametros indicados no SQL 
 		// OBS: a ordem da chamada do método setParam deve ser na mesma ordem das (?) 
@@ -34,6 +40,10 @@ class UsuarioDao
 		$dao = new DataAccessObject();
 		
 		$sql = 'UPDATE usuario SET email = ?, senha = ? WHERE id = ?';
+		
+		//$sql = 'UPDATE usuario SET email = ?, senha = AES_ENCRYPT(?,"@chave@") WHERE id = ?';
+		
+		
 		$dao->prepare($sql);
 		
 		$dao->setParam($usuario->getEmail());
@@ -46,7 +56,10 @@ class UsuarioDao
 	public function buscarPorEmailSenha(Usuario $usuario)
 	{
 		$dao = new DataAccessObject();
+		// SQL sem criptografia do banco de dados
 		$sql = 'SELECT id,email,senha FROM usuario WHERE email = ? AND senha = ?';
+		
+// 		$sql = 'SELECT id,email,senha FROM usuario WHERE email = ? AND senha = AES_ENCRYPT(?,"@chave@")';
 		
 		$dao->prepare($sql);
 		

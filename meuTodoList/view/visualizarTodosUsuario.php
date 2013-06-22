@@ -34,7 +34,7 @@ $usuarios = $facade->buscarTodosUsuario();
 		<td><?php echo $usuario->getEmail(); ?></td>
 		<td><?php echo $usuario->getSenha(); ?></td>
 		<td><a class="btn btn-inverse" href="atualizarUsuario.php?id=<?php echo $usuario->getId(); ?>"><i class="icon-edit icon-white"></i></a></td>
-		<td><a class="btn btn-danger" href="visualizarTodosUsuario.php?id=<?php echo $usuario->getId(); ?>"><i class="icon-remove icon-white"></i></a></td>
+		<td><a onclick="return confirm('Deseja excluir ?')" class="btn btn-danger" href="visualizarTodosUsuario.php?id=<?php echo $usuario->getId(); ?>"><i class="icon-remove icon-white"></i></a></td>
 	</tr>
 	<?php } ?>
 </table>

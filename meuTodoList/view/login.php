@@ -44,11 +44,19 @@ $facade->realizarLogin();
 
 <form class="form-signin" method="post" action="login.php">
 <h2 class="form-signin-heading">Login</h2>
-<input class="input-block-level" type="text" name="email" placeholder="Email">
-<input class="input-block-level" type="password" name="senha" placeholder="Password">
-<input class="btn btn-large btn-primary" type="submit" name="Login" value="Login">
+<input class="input-block-level" id="email" type="text" name="email" placeholder="Email">
+<div id="labelEmail"></div>
+<br>
+<div id="labelEmailChange"></div>
+<br>
+<input class="input-block-level" id="senha" type="password" name="senha" placeholder="Password">
+<input class="btn btn-large btn-primary" type="submit" onclick="return verificar();" name="Login" value="Login" id="BotaoLogin">
 <a class="btn btn-large" href="index.php">Voltar</a>
 
 </form>
+
+<script type="text/javascript" src="../styles/js/Util.js"></script>
+<script type="text/javascript" src="../styles/js/login.js"></script>
+
 
 <?php include_once 'template/footer.php'; ?>

@@ -26,6 +26,7 @@ $tarefas = $facade->buscaTodasTarefaDoUsuario();
 		<tr>
 			<td>Título</td>
 			<td>Prioridade</td>
+			<td>Categoria</td>
 			<td>Excluir</td>
 		</tr>
 	</thead>
@@ -34,6 +35,8 @@ $tarefas = $facade->buscaTodasTarefaDoUsuario();
 	<tr>
 		<td><?php echo $tarefa->getTitulo(); ?></td>
 		<td><?php echo $facade->getPrioridadeById($tarefa->getPrioridade()); ?></td>
+		<td><?php echo $tarefa->categoria; ?></td>
+		
 		<td><a class="btn btn-danger" href="index.php?excluir=1&amp;id=<?php echo $tarefa->getId(); ?>"><i class="icon-remove icon-white"></i></a></td>
 		
 	</tr>

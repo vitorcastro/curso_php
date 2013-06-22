@@ -16,6 +16,7 @@ class UsuarioApp
 		// encapsulamento do objeto usuário
 		$usuario = new Usuario();
 		$usuario->setEmail($email);
+		
 		$usuario->setSenha($senha);
 		
 		$usuarioDao = new UsuarioDao();

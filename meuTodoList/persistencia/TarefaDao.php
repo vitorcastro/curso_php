@@ -7,13 +7,15 @@ class TarefaDao
 	{
 		$dao = new DataAccessObject();
 
-		$sql = 'INSERT INTO tarefa(idUsuario,titulo,detalhe,prioridade) VALUES(?,?,?,?);';
+		$sql = 'INSERT INTO tarefa(idUsuario,titulo,detalhe,prioridade,idCategoria) VALUES(?,?,?,?,?);';
 		$dao->prepare($sql);
 		
 		$dao->setParam($tarefa->getIdUsuario());
 		$dao->setParam($tarefa->getTitulo());
 		$dao->setParam($tarefa->getDetalhe());
 		$dao->setParam($tarefa->getPrioridade());
+		$dao->setParam($tarefa->getIdCategoria());
+		
 		
 		return $dao->executeQuery();
 	}
@@ -21,7 +23,38 @@ class TarefaDao
 	public function buscarTodosPorUsuario($idUsuario)
 	{
 		$dao = new DataAccessObject();
-		$sql = 'SELECT id,titulo,detalhe,prioridade FROM tarefa WHERE idUsuario = ? ORDER BY prioridade DESC';
+// 		busca todas as tarefas do usuário sem a categoria
+		$sql = 'SELECT id,titulo,detalhe,prioridade, IFNULL(idCategoria,"Sem Categoria") as categoria FROM tarefa 
+					WHERE idUsuario = ? ORDER BY prioridade DESC';
+
+// 		Faz a junção por restrição
+// 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, c.descricao as categoria
+// 		 				FROM tarefa t, categoria c
+// 		 					WHERE t.idCategoria = c.id AND idUsuario = ?
+//								ORDER BY prioridade DESC';
+		
+//		Faz a junção das duas tabela e gera o produto cartesiano
+// 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, c.descricao as categoria 
+// 					FROM tarefa t JOIN categoria c 
+// 					WHERE idUsuario = ? ORDER BY prioridade DESC';
+
+// 		Faz a junção com a condição de relação
+// 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, c.descricao as categoria
+// 		 			FROM tarefa t JOIN categoria c ON (t.idCategoria = c.id)
+// 		 				WHERE idUsuario = ? 
+// 							ORDER BY prioridade DESC';
+
+// 		Faz a junção trazendo todos os elementos a esquerda independente dos a direita
+// 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, IFNULL(c.descricao,"Sem Categoria") as categoria
+// 		 			FROM tarefa t LEFT JOIN categoria c ON (t.idCategoria = c.id)
+// 		 				WHERE idUsuario = ? 
+// 							ORDER BY prioridade DESC';
+
+// 		Faz a junção trazendo todos os elementos a direita independente dos a esquerda
+// 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, c.descricao as categoria
+// 		 			FROM tarefa t RIGHT JOIN categoria c ON (t.idCategoria = c.id)
+// 		 				WHERE idUsuario = ?
+// 							ORDER BY prioridade DESC';
 		
 		$dao->prepare($sql);
 		

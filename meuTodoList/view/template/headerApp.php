@@ -7,6 +7,7 @@ Seguranca::usuarioLogado();
 	<title>Meu Todo List</title>
 	<link rel="stylesheet" href="../../styles/css/bootstrap.css">
 	<link rel="stylesheet" href="../../styles/css/bootstrap-responsive.min.css">
+	<link rel="shortcut icon" href="../../styles/img/favicon.ico">
 </head>
 
 <div class="container">
@@ -19,6 +20,7 @@ Seguranca::usuarioLogado();
               <ul class="nav">
                 <li><a href="index.php">Minhas Tarefas</a></li>
                 <li><a href="buscarTarefa.php">Buscar Tarefas</a></li>
+                <li><a href="estatistica.php">Estatísticas</a></li>
                 <li><a href="../encerrarSessao.php">Sair</a></li>
               </ul>
             </div>

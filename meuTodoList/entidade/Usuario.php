@@ -22,6 +22,13 @@ class Usuario
 	
 	public function setSenha($senha)
 	{
+		//métodos de criptografia
+		// md5, sh1a (não reversivel)
+		// base_encode (reversivel)
+		//$senha = md5($senha);
+		//$senha = sha1($senha);
+		//$senha = base64_encode($senha);
+		
 		$this->senha = $senha;
 	}
 	

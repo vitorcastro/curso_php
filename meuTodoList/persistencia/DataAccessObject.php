@@ -39,7 +39,19 @@ class DataAccessObject
 	{
 		try {
 			// verifica se a query foi executada no banco de dados, semelhante a função nativa mysql_query()
-			return $this->statment->execute();
+			$query = $this->statment->execute();
+			
+			$error = $this->statment->errorInfo();
+			
+			if (isset($error[0])){
+				if ($error[0] != '00000')
+				{
+					echo $error[2];
+				}
+			}
+			
+			return $query;
+			
 		} catch (PDOException $e) 
 		{
 			//tratamento de exceção caso ocorra alguma falha

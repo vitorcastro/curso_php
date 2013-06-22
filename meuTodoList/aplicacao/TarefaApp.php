@@ -4,13 +4,14 @@ IncludeFile::load('entidade/Tarefa');
 
 class TarefaApp
 {
-	public function salvar($idUsuario,$titulo,$detalhe,$prioridade)
+	public function salvar($idUsuario,$titulo,$detalhe,$prioridade,$idCategoria)
 	{
 		$tarefa = new Tarefa();
 		$tarefa->setIdUsuario($idUsuario);
 		$tarefa->setTitulo($titulo);
 		$tarefa->setDetalhe($detalhe);
 		$tarefa->setPrioridade($prioridade);
+		$tarefa->setIdCategoria($idCategoria);
 		
 		$tarefaDao = new TarefaDao();
 		

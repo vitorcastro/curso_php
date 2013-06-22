@@ -12,6 +12,7 @@ class Tarefa
 	private $detalhe;
 	private $prioridade;
 	private $anexo;
+	private $idCategoria;
 	
 	public function setId($id)
 	{
@@ -43,6 +44,11 @@ class Tarefa
 		$this->anexo = $anexo;
 	}
 	
+	public function setIdCategoria($idCategoria)
+	{
+		$this->idCategoria = $idCategoria;
+	}
+	
 	public function getId()
 	{
 		return $this->id;
@@ -71,6 +77,14 @@ class Tarefa
 	public function getAnexo()
 	{
 		return $this->anexo;
+	}
+	
+	public function getIdCategoria()
+	{
+		if ($this->idCategoria == 0) 
+			return null;
+		
+		return $this->idCategoria;
 	}
 	
 }

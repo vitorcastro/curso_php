@@ -3,6 +3,7 @@
 	<title>Meu Todo List</title>
 	<link rel="stylesheet" href="../styles/css/bootstrap.css">
 	<link rel="stylesheet" href="../styles/css/bootstrap-responsive.min.css">
+	<link rel="shortcut icon" href="../styles/img/favicon.ico">
 </head>
 
 <div class="container">

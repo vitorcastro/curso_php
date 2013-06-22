@@ -41,3 +41,24 @@ ALTER TABLE `tarefa` ADD INDEX ( `idUsuario` ) ;
 
 -- cria chave estrangeira com a tabela usuario
 ALTER TABLE `tarefa` ADD FOREIGN KEY ( `idUsuario` ) REFERENCES `usuario` (`id`);
+
+-- cria a tabela categoria
+CREATE TABLE  `categoria` (
+`id` INT NOT NULL AUTO_INCREMENT ,
+`descricao` VARCHAR( 50 ) NOT NULL ,
+PRIMARY KEY (  `id` )
+) ENGINE = INNODB;
+
+-- cria a coluna idCategoria 
+ALTER TABLE  `tarefa` ADD  `idCategoria` INT NULL DEFAULT NULL ,
+ADD INDEX (  `idCategoria` );
+
+-- adiciona a chave estrangeira na tabela tarefa referenciando a tabela categoria
+ALTER TABLE  `tarefa` ADD FOREIGN KEY (  `idCategoria` ) REFERENCES  `categoria` (
+`id`);
+
+-- insere categorias padrões
+INSERT INTO categoria(descricao) VALUES('Trabalho'),('Pessoal'),('Estudo'),('Projetos');
+
+ALTER TABLE  `usuario` CHANGE  `senha`  `senha` VARCHAR( 40 ) NOT NULL
+

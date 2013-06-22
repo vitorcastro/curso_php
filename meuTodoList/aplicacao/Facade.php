@@ -1,7 +1,10 @@
 <?php
 IncludeFile::load('aplicacao/TarefaApp');
 IncludeFile::load('aplicacao/UsuarioApp');
+IncludeFile::load('aplicacao/CategoriaApp');
+
 IncludeFile::load('entidade/Prioridade');
+
 IncludeFile::load('biblioteca/Redirect');
 
 /**
@@ -20,7 +23,7 @@ class Facade
 		{
 			$tarefaApp = new TarefaApp();
 			
-			$inserir = $tarefaApp->salvar($_SESSION['id'], $_POST['titulo'], $_POST['detalhe'], $_POST['prioridade']);
+			$inserir = $tarefaApp->salvar($_SESSION['id'], $_POST['titulo'], $_POST['detalhe'], $_POST['prioridade'],$_POST['idCategoria']);
 			
 			if ($inserir)
 				Redirect::to('index');
@@ -178,6 +181,34 @@ class Facade
 			else
 				Redirect::to('index');
 		}
+	}
+	
+	/**
+	 * CATEGORIA
+	 */
+	// A função irá gerar um componente HTML para listar as categorias
+	public function geraListaCategoria()
+	{
+		$categoriaApp = new CategoriaApp();
+		
+		$categorias = $categoriaApp->buscarTodos();
+		
+		if ($categorias)
+		{
+			echo '<select name="idCategoria">';
+				echo '<option value="0">Selecione</option>';
+				
+			foreach ($categorias as $categoria){		
+				echo '<option value="',$categoria->getId(),'">',$categoria->getDescricao(),'</option>';
+			}
+			echo '</select>';
+		}
+	}
+	
+	public function buscarTotalTarefaUsuarioPorCategoria()
+	{
+		$categoriaApp = new CategoriaApp();
+		return  $categoriaApp->buscarTotalTarefaUsuarioPorCategoria($_SESSION['id']);
 	}
 	
 }
