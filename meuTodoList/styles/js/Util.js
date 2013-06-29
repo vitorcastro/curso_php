@@ -6,23 +6,50 @@
 // 		return false;
 // 	};
 // }
+//
+//function isEmpty(value)
+//{
+//	if (value.length == 0) 
+//		return true;
+//	
+//	return false;
+//}
+//
+//function verificar()
+//{
+//	var pattern = /^[0-9]{6,8}$/;
+//	
+//	var senha = document.getElementById('senha').value;
+//	
+//	if (!pattern.test(senha)){
+//		alert("Senha deve conter somente números");		
+//		return false;
+//	}
+//}
 
-function isEmpty(value)
+function declaracaoDeVariaveis()
 {
-	if (value.length == 0) 
-		return true;
+//	var nomeDaVariavel = 'EJI';
+		
 	
-	return false;
-}
+//	// declaração de variável
+	
+	
+//	
+//	// tipagem dinâmica
+//	var inteiro = 10;
+//	var pontoFlutuante = 10.5;
+//	var booleana = true;
+//	var string = 'Nome';
+//	var array = new Array();
 
-function verificar()
-{
-	var pattern = /^[0-9]{6,8}$/;
+//alert(inteiro);
+
+//	array = ["teste","arroz"];
+//	alert(array);
 	
-	var senha = document.getElementById('senha').value;
+	//var objeto = {};
+	//objeto.teste = "TESTE";
 	
-	if (!pattern.test(senha)){
-		alert("Senha deve conter somente números");		
-		return false;
-	}
+	//alert(objeto.teste);
 }

@@ -117,7 +117,7 @@ class Facade
 	public function realizarLogin()
 	{
 		// verificar se existe o $_POST[login], que é o mesmo nome do botão do formulário
-		if (isset($_POST['Login']))
+		if (isset($_POST['email']))
 		{
 			$usuarioApp = new UsuarioApp();
 			$usuarioLogin = $usuarioApp->verificarLogin($_POST['email'], $_POST['senha']);
@@ -196,7 +196,7 @@ class Facade
 		if ($categorias)
 		{
 			echo '<select name="idCategoria">';
-				echo '<option value="0">Selecione</option>';
+			echo '<option value="0">Selecione</option>';
 				
 			foreach ($categorias as $categoria){		
 				echo '<option value="',$categoria->getId(),'">',$categoria->getDescricao(),'</option>';

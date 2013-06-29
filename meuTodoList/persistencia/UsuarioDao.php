@@ -20,7 +20,8 @@ class UsuarioDao
 		$sql = 'INSERT INTO usuario(email,senha) VALUES(?,?);';
 		
 		//SQL com criptografia do Banco de dados
-// 		$sql = 'INSERT INTO usuario(email,senha) VALUES(?,AES_ENCRYPT(?,"@chave@"));';
+		//$sql = 'INSERT INTO usuario(email,senha) 
+		//			VALUES(?,AES_ENCRYPT(?,"@chave@"));';
 		
 		$dao->prepare($sql);
 		// está setando os parametros indicados no SQL 
@@ -39,9 +40,11 @@ class UsuarioDao
 	{
 		$dao = new DataAccessObject();
 		
-		$sql = 'UPDATE usuario SET email = ?, senha = ? WHERE id = ?';
+		$sql = 'UPDATE usuario SET email = ?, senha = ? 
+					WHERE id = ?';
 		
-		//$sql = 'UPDATE usuario SET email = ?, senha = AES_ENCRYPT(?,"@chave@") WHERE id = ?';
+// 		$sql = 'UPDATE usuario SET email = ?, 
+// 				senha = AES_ENCRYPT(?,"@chave@") WHERE id = ?';
 		
 		
 		$dao->prepare($sql);
@@ -58,8 +61,8 @@ class UsuarioDao
 		$dao = new DataAccessObject();
 		// SQL sem criptografia do banco de dados
 		$sql = 'SELECT id,email,senha FROM usuario WHERE email = ? AND senha = ?';
-		
-// 		$sql = 'SELECT id,email,senha FROM usuario WHERE email = ? AND senha = AES_ENCRYPT(?,"@chave@")';
+		//$sql = 'SELECT id,email,senha FROM usuario 
+		//			WHERE email = ? AND AES_DECRYPT(senha,"@chave@") = ?';
 		
 		$dao->prepare($sql);
 		

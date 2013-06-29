@@ -24,14 +24,16 @@ class TarefaDao
 	{
 		$dao = new DataAccessObject();
 // 		busca todas as tarefas do usuário sem a categoria
-		$sql = 'SELECT id,titulo,detalhe,prioridade, IFNULL(idCategoria,"Sem Categoria") as categoria FROM tarefa 
-					WHERE idUsuario = ? ORDER BY prioridade DESC';
+// 		$sql = 'SELECT id,titulo,detalhe,prioridade, 
+// 					IFNULL(idCategoria,"Sem Categoria") as categoria 
+// 						FROM tarefa 
+// 							WHERE idUsuario = ? ORDER BY prioridade DESC';
 
 // 		Faz a junção por restrição
 // 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, c.descricao as categoria
 // 		 				FROM tarefa t, categoria c
 // 		 					WHERE t.idCategoria = c.id AND idUsuario = ?
-//								ORDER BY prioridade DESC';
+// 								ORDER BY prioridade DESC';
 		
 //		Faz a junção das duas tabela e gera o produto cartesiano
 // 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, c.descricao as categoria 
@@ -39,13 +41,14 @@ class TarefaDao
 // 					WHERE idUsuario = ? ORDER BY prioridade DESC';
 
 // 		Faz a junção com a condição de relação
-// 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, c.descricao as categoria
-// 		 			FROM tarefa t JOIN categoria c ON (t.idCategoria = c.id)
-// 		 				WHERE idUsuario = ? 
-// 							ORDER BY prioridade DESC';
+		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, c.descricao as categoria
+		 			FROM tarefa t JOIN categoria c ON (t.idCategoria = c.id)
+		 				WHERE idUsuario = ? 
+							ORDER BY prioridade DESC';
 
 // 		Faz a junção trazendo todos os elementos a esquerda independente dos a direita
-// 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, IFNULL(c.descricao,"Sem Categoria") as categoria
+// 		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade, 
+// 					IFNULL(c.descricao,"Sem Categoria") as categoria
 // 		 			FROM tarefa t LEFT JOIN categoria c ON (t.idCategoria = c.id)
 // 		 				WHERE idUsuario = ? 
 // 							ORDER BY prioridade DESC';

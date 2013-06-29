@@ -1,17 +1,3 @@
-<?php include_once 'template/header.php'; ?>
-<?php 
-include_once '../biblioteca/IncludeFile.php';
-IncludeFile::load('aplicacao/Facade');
-
-$facade = new Facade();
-
-$facade->realizarLogin();
-
-// Notem que a ação (action) do formulário irá encaminhar os dados por POST para mesma página,
-// fazendo com que método chamada pelo Facade capture as informação e realize o login caso as informações estejam corretas
-?>
-
-
 <style>
 	.form-signin {
 	max-width: 300px;
@@ -55,6 +41,3 @@ $facade->realizarLogin();
 <script type="text/javascript" src="../styles/js/jquery2.0.2.js"></script>
 <script type="text/javascript" src="../styles/js/Util.js"></script>
 <script type="text/javascript" src="../styles/js/login.js"></script>
-
-
-<?php include_once 'template/footer.php'; ?>

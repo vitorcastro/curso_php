@@ -47,7 +47,7 @@ $facade->processaSalvarTarefa();
 				</div>
 				
 				<div class="control-group">
-					<label class="control-label" for="inputDetalhe">Prioridade:</label>
+					<label class="control-label" for="inputDetalhe">Categoria:</label>
 					<div class="controls">
 					<?php $facade->geraListaCategoria(); ?>
 					</div>

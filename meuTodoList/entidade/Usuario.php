@@ -22,14 +22,14 @@ class Usuario
 	
 	public function setSenha($senha)
 	{
-		//métodos de criptografia
-		// md5, sh1a (não reversivel)
+		// métodos de criptografia
+		// md5, sha1 (não reversivel)
 		// base_encode (reversivel)
 		//$senha = md5($senha);
 		//$senha = sha1($senha);
 		//$senha = base64_encode($senha);
 		
-		$this->senha = $senha;
+		$this->senha = md5($senha);
 	}
 	
 	public function getId()
@@ -44,6 +44,8 @@ class Usuario
 	
 	public function getSenha()
 	{
+		// usar base64_decode($this->senha) 
+		// caso seja usado o base64_encode
 		return $this->senha;
 	}
 	

@@ -15,6 +15,7 @@ $usuarios = $facade->buscarTodosUsuario();
 <h1>Visualizar Todos os Usuário</h1>
 
 <a href="novoUsuario.php" class="btn btn-primary"><i class="icon-user icon-white"></i> Novo Usuário</a>
+<a id="irFim" class="btn">Ir para o fim da página</a>
 <br>
 
 <?php if ($usuarios) { ?>
@@ -44,6 +45,9 @@ $usuarios = $facade->buscarTodosUsuario();
 <?php } ?>
 
 <hr>
-<a href="index.php" class="btn">Voltar</a>
+<a href="index.php" class="btn" id="fim">Voltar</a>
+
+<script type="text/javascript" src="../styles/js/jquery2.0.2.js"></script>
+<script type="text/javascript" src="../styles/js/visualizarTodosUsuario.js"></script>
 
 <?php include_once 'template/footer.php'; ?>

@@ -13,6 +13,8 @@ $tarefas = $facade->buscaTodasTarefaDoUsuario();
 ?>
       <div class="jumbotron">
         <h1>Lista de tarefas</h1>
+        <a id="efeito" class="btn">Opacidade</a>
+        <a id="fonteMax" class="btn">Aumentar letra</a>
       </div>
       <hr>
 
@@ -51,5 +53,8 @@ $tarefas = $facade->buscaTodasTarefaDoUsuario();
         
         </div>
       </div>
+      
+<script type="text/javascript" src="../../styles/js/jquery2.0.2.js"></script>
+<script type="text/javascript" src="../../styles/js/app.index.js"></script>
 
 <?php include_once '../template/footer.php'; ?>
