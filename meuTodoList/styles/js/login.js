@@ -1,19 +1,46 @@
-//$(document).ready(function(){
-//
-//	$("input:submit").click(function(event){
+$(document).ready(function(){
+	
+	// busca elementos html pelo id (#)
+	//	$("#id");
+	
+	// busca elementos html pela class (.)
+	// $(".load"));
+	
+	// busca elementos html por tag
+	//	$("input").hide(); // esconde os elementos
+	//  jQuery("input").hide();
+	//	$("input").show(); // exibe os elementos
+	
+	$("input:submit").click(function(event){
+		
+		// this fazer a operação no elemento marcado na função
+//		$(this).val("Login ....");
+//		$(this).attr("value","Login ....");
+		
+		// inserir html em um elemento Ex: DIV SPAN
+//		$("#load").text("Carregando ...");
+//		$("#load").html("<h3>Carregando ...</h3>");
+		
+		
+		// sobrescrevendo o atributo title da página
+//		$(document).attr("title","Login");
+		
+//		return false;
 //		
-//		if ($("#email").val() == "")
-//		{
-//			$("#labelEmail").css("color","red");
-//			$("#labelEmail").text("Email inválido");
-//			$("#labelEmail").show();
-//			$("#labelEmail").fadeOut("slow");
-//			$("#email").focus();
-//			return false;
-//		}
-//	});
+		
+//		$("input[name=email]").val();
+		if ($("#email").val() == "")
+		{
+			$("#labelEmail").css("color","red");
+			$("#labelEmail").text("Email inválido");
+			$("#labelEmail").hide();
+			$("#labelEmail").fadeIn("slow");
+			$("#email").focus();
+			return false;
+		}
+	});
 //	
-//});
+});
 
 // ativa a função quando a página for carregada
 //window.onload = function (){

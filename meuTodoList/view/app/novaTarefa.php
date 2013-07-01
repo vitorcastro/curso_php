@@ -8,6 +8,11 @@ $facade->processaSalvarTarefa();
 
 ?>
 
+<link rel="stylesheet" href="<?php echo IncludeFile::getPathCss(); ?>/jquery.ui/jquery.ui.all.css">
+
+
+
+
 <div class="jumbotron">
 	<h1>Nova Tarefa</h1>
 </div>
@@ -54,12 +59,21 @@ $facade->processaSalvarTarefa();
 				</div>
 
 				<div class="control-group">
+				<label class="control-label">Data:</label>
+					<div class="controls">
+						<input type="text" name="name_data" id="id_data">
+					</div>
+				</div>
+				
+				<div class="control-group">
 					<div class="controls">
 						<input type="submit" class="btn btn-success" value="Salvar" name="SalvarTarefa">
 						<input type="button" class="btn btn-inverse" value="Voltar" onclick="window.history.back(-1)">
 						
 					</div>
 				</div>
+				
+				
 
 
 
@@ -70,5 +84,18 @@ $facade->processaSalvarTarefa();
 
 	</div>
 </div>
+
+<?php 
+IncludeFile::js('jquery2.0.2.js');
+IncludeFile::js('jquery.ui/jquery.ui.core.js');
+IncludeFile::js('jquery.ui/jquery.ui.widget.js');
+IncludeFile::js('jquery.ui/jquery.ui.datepicker.js');
+?>
+<script type="text/javascript">
+	//$(document).ready(function(){
+	$("#id_data").datepicker();
+	//});
+</script>
+
 
 <?php include_once '../template/footer.php'; ?>

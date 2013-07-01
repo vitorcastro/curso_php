@@ -6165,3 +6165,9 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+.cabecalhoTabela
+{
+	font-size: 16px;
+	font-weight: bold;
+}

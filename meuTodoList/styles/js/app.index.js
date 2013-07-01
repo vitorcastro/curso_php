@@ -1,7 +1,9 @@
 $(document).ready(function(){
 
-	// selecionar a primeira linha do resultado da tabela e aumentar a font
-	$("table tbody tr:first-child").css("font-size","20px");
+// 	selecionar a primeira linha do resultado da tabela e aumentar a font
+//	$("table thead tr:first-child").css("font-size","14px");
+	
+	$("table thead tr:first-child").addClass("cabecalhoTabela");
 	
 	$("#efeito").click(function (){
 		// alterar atributos css com efeito
@@ -10,9 +12,9 @@ $(document).ready(function(){
 		}, 1500);
 	});
 	
+	
 	$("#fonteMax").click(function (){
-		$("table").css("font-size","20px");
+		$("table").hide();
+//		$("tbody tr").css("font-size","20px");
 	});
-	
-	
 });

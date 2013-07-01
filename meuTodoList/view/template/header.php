@@ -1,9 +1,9 @@
 <?php session_start(); ?>
 <head>
 	<title>Meu Todo List</title>
-	<link rel="stylesheet" href="../styles/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../styles/css/bootstrap.css">
 	<link rel="stylesheet" href="../styles/css/bootstrap-responsive.min.css">
-	<link rel="shortcut icon" href="../styles/img/favicon.ico">
+	<link rel="shortcut icon" href="view/styles/img/favicon.ico">
 </head>
 
 <div class="container">
