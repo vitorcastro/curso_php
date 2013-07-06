@@ -53,5 +53,29 @@ $tarefas = $facade->realizarBuscaTarefas();
         
         </div>
       </div>
+     <?php 
+     IncludeFile::js('jquery2.0.2.js');
+     IncludeFile::js('jquery.ui/jquery.ui.js');
+     ?>
+    <script type="text/javascript">
+	$().ready(function() {
+
+		
+		var json = $.getJSON('_jSONCategorias.php', function(data) {
+			var categorias = [];
+			var index = 0;
+			$.each(data, function(key, val) {
+				categorias[index] = val.descricao;
+				index++;
+			});
+
+			$( "input[name=busca]").autocomplete({
+				source: categorias
+			});
+		});
+
+	});
+
+    </script>
 
 <?php include_once '../template/footer.php'; ?>

@@ -8,7 +8,9 @@ $facade->processaSalvarTarefa();
 
 ?>
 
-<link rel="stylesheet" href="<?php echo IncludeFile::getPathCss(); ?>/jquery.ui/jquery.ui.all.css">
+<link
+	rel="stylesheet"
+	href="<?php echo IncludeFile::getPathCss(); ?>/jquery.ui/jquery.ui.all.css">
 
 
 
@@ -27,53 +29,54 @@ $facade->processaSalvarTarefa();
 				<div class="control-group">
 					<label class="control-label" for="inputTitulo">Título:</label>
 					<div class="controls">
-						<input type="text" name="titulo" id="inputTitulo"
-							placeholder="Título">
+						<input type="text" name="titulo" id="inputTitulo" title="Descrever a tarefa" tooltip>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="inputDetalhe">Detalhe:</label>
 					<div class="controls">
-						<textarea rows="6" cols="70" name="detalhe" id="inputDetalhe"></textarea>
+						<textarea rows="6" cols="70" name="detalhe" tooltip
+							title="Detalhar a tarefa" id="inputDetalhe"></textarea>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label" for="inputDetalhe">Prioridade:</label>
 					<div class="controls">
-						<select name="prioridade">
-							<option value="0">Selecione</option>
+						<select name="prioridade" title="Qual a Prioridade">
+							<option value="">Selecione</option>
 							<option value="3">Alta</option>
 							<option value="2">Média</option>
 							<option value="1">Baixa</option>
 						</select>
 					</div>
 				</div>
-				
+
 				<div class="control-group">
 					<label class="control-label" for="inputDetalhe">Categoria:</label>
 					<div class="controls">
-					<?php $facade->geraListaCategoria(); ?>
+						<?php $facade->geraListaCategoria(); ?>
 					</div>
 				</div>
 
 				<div class="control-group">
-				<label class="control-label">Data:</label>
+					<label class="control-label">Data:</label>
 					<div class="controls">
 						<input type="text" name="name_data" id="id_data">
 					</div>
 				</div>
-				
+
 				<div class="control-group">
 					<div class="controls">
-						<input type="submit" class="btn btn-success" value="Salvar" name="SalvarTarefa">
-						<input type="button" class="btn btn-inverse" value="Voltar" onclick="window.history.back(-1)">
-						
+						<input type="submit" class="btn btn-success" value="Salvar"
+							name="SalvarTarefa"> <input type="button" class="btn btn-inverse"
+							value="Voltar" onclick="window.history.back(-1)">
+
 					</div>
 				</div>
-				
-				
+
+
 
 
 
@@ -87,14 +90,39 @@ $facade->processaSalvarTarefa();
 
 <?php 
 IncludeFile::js('jquery2.0.2.js');
-IncludeFile::js('jquery.ui/jquery.ui.core.js');
-IncludeFile::js('jquery.ui/jquery.ui.widget.js');
-IncludeFile::js('jquery.ui/jquery.ui.datepicker.js');
+IncludeFile::js('jquery.ui/jquery.ui.js');
+IncludeFile::js('jquery.validate.js');
+
 ?>
 <script type="text/javascript">
-	//$(document).ready(function(){
+$(document).ready(function(){
 	$("#id_data").datepicker();
-	//});
+	$("form").tooltip();
+
+	$("form").validate({
+		rules: 
+		{ 
+			titulo: { required: true, minlength: 2 },
+			detalhe: "required",
+			prioridade: "required",
+		},
+		messages: 
+		{
+			titulo: { required: "O título é obrigatório", minlength: "O título deve conter no mínimo 2 caracteres" },
+			detalhe: { required: "O detalhe é obrigatório" },
+			prioridade: { required: "A prioridade é obrigatório" },
+		}
+	}); 
+	//$("select[name=idCategoria]").attr("title","");
+	//$("select[name=idCategoria]").tooltip({content: "Selecione a Categoria"});
+	
+	//$("form").tooltip({ track: true });
+	//$("form").tooltip({ position: { my: "left+15 center", at: "right center" } });
+	//$("form").tooltip({ position: { my: "left", at: "top", of: ".span12"} });
+	//$("form").tooltip({ hide: { effect: "explode", duration: 500 } });
+	//$("form").tooltip("option", "items", "[tooltip]" );
+	
+	});
 </script>
 
 

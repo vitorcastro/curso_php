@@ -54,7 +54,8 @@ $tarefas = $facade->buscaTodasTarefaDoUsuario();
         </div>
       </div>
       
-<script type="text/javascript" src="../../styles/js/jquery2.0.2.js"></script>
-<script type="text/javascript" src="../../styles/js/app.index.js"></script>
+<?php 
+IncludeFile::js('app.index.js');
+?>
 
 <?php include_once '../template/footer.php'; ?>

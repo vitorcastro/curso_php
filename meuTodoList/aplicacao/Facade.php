@@ -205,6 +205,19 @@ class Facade
 		}
 	}
 	
+	public function jSONCategorias()
+	{
+		$categoriaApp = new CategoriaApp();
+		$categorias = $categoriaApp->buscarTodos();
+		
+		$arrayJSON = array();
+		
+		foreach ($categorias as $categoria)
+			$arrayJSON[] = array("descricao" => $categoria->getDescricao());
+		
+		echo json_encode($arrayJSON);
+	}
+	
 	public function buscarTotalTarefaUsuarioPorCategoria()
 	{
 		$categoriaApp = new CategoriaApp();

@@ -2,6 +2,7 @@
 <head>
 	<title>Meu Todo List</title>
 	<link rel="stylesheet" type="text/css" href="../styles/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../styles/css/jquery.ui/jquery.ui.css">
 	<link rel="stylesheet" href="../styles/css/bootstrap-responsive.min.css">
 	<link rel="shortcut icon" href="view/styles/img/favicon.ico">
 </head>

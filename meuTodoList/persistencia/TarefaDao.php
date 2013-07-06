@@ -74,15 +74,17 @@ class TarefaDao
 		// LIKE TESTE% , significa o que vai ser buscado todas as strings que iniciam com a palavra TESTE.
 		// LIKE %TESTE , significa o que vai ser buscado todas as strings que finalizam com a palavra TESTE.
 		
-		$sql = 'SELECT id,titulo,detalhe,prioridade FROM tarefa 
-					WHERE idUsuario = ? AND (titulo LIKE ? OR detalhe LIKE ?) 
-					ORDER BY prioridade DESC';
+		// Ajuste do SQL para comparar as categorias LEFT JOIN
+		$sql = 'SELECT t.id,t.titulo,t.detalhe,t.prioridade FROM tarefa t LEFT JOIN categoria c ON (t.idCategoria = c.id)
+					WHERE t.idUsuario = ? AND (t.titulo LIKE ? OR t.detalhe LIKE ? OR c.descricao LIKE ?) 
+					ORDER BY t.prioridade DESC';
 	
 		$dao->prepare($sql);
 	
 		$dao->setParam($tarefa->getIdUsuario());
 		$dao->setParam('%' . $tarefa->getTitulo() . '%');
 		$dao->setParam('%' . $tarefa->getDetalhe() . '%');
+		$dao->setParam('%' . $tarefa->getTitulo() . '%');
 	
 		return $dao->getList('Tarefa');
 	}
