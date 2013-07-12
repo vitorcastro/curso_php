@@ -1,4 +1,5 @@
 <?php 
+// informar que a página deve ser interpretada usando iso-8859-1
 header("Content-type: text/html; charset=iso-8859-1");
 
 include_once '../biblioteca/IncludeFile.php';
@@ -16,7 +17,7 @@ $facade->salvarUsuario();
 <input type="text" name="email" title="Email">
 
 <label>Senha:</label>
-<input type="password" name="senha" title="Senha">
+<input type="password" name="senha" title="Senha" id="senha">
 
 <br>
 

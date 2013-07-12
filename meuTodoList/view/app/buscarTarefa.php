@@ -60,8 +60,8 @@ $tarefas = $facade->realizarBuscaTarefas();
     <script type="text/javascript">
 	$().ready(function() {
 
-		
 		var json = $.getJSON('_jSONCategorias.php', function(data) {
+
 			var categorias = [];
 			var index = 0;
 			$.each(data, function(key, val) {

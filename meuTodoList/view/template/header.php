@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="../styles/css/jquery.ui/jquery.ui.css">
 	<link rel="stylesheet" href="../styles/css/bootstrap-responsive.min.css">
 	<link rel="shortcut icon" href="view/styles/img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../styles/css/estilo.css">
 </head>
 
 <div class="container">

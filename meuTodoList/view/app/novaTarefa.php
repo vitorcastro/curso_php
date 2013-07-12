@@ -29,7 +29,7 @@ $facade->processaSalvarTarefa();
 				<div class="control-group">
 					<label class="control-label" for="inputTitulo">Título:</label>
 					<div class="controls">
-						<input type="text" name="titulo" id="inputTitulo" title="Descrever a tarefa" tooltip>
+						<input type="text" name="titulo" id="inputTitulo" title="Descrever a tarefa breve" tooltip="">
 					</div>
 				</div>
 
@@ -96,9 +96,13 @@ IncludeFile::js('jquery.validate.js');
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#id_data").datepicker();
+
+	//Gera o calendário
+	//$("#id_data").datepicker();
+
 	$("form").tooltip();
 
+	
 	$("form").validate({
 		rules: 
 		{ 
@@ -112,12 +116,13 @@ $(document).ready(function(){
 			detalhe: { required: "O detalhe é obrigatório" },
 			prioridade: { required: "A prioridade é obrigatório" },
 		}
-	}); 
-	//$("select[name=idCategoria]").attr("title","");
-	//$("select[name=idCategoria]").tooltip({content: "Selecione a Categoria"});
+	});
+	 
+	$("select[name=idCategoria]").attr("title","");
+	$("select[name=idCategoria]").tooltip({content: "Selecione a Categoria"});
 	
 	//$("form").tooltip({ track: true });
-	//$("form").tooltip({ position: { my: "left+15 center", at: "right center" } });
+	$("form").tooltip({ position: { my: "left+15 center", at: "right center" } });
 	//$("form").tooltip({ position: { my: "left", at: "top", of: ".span12"} });
 	//$("form").tooltip({ hide: { effect: "explode", duration: 500 } });
 	//$("form").tooltip("option", "items", "[tooltip]" );

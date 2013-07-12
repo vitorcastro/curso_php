@@ -33,9 +33,10 @@ include_once '../biblioteca/IncludeFile.php';
 				&raquo;</a>
 		</p>
 		<div id="tabs">
-		 <ul>
+		<ul>
 			<li><a href="#tab-1"><span>Funcionalidades</span></a></li>
 			<li><a href="#tab-2" id="tab-2-load"><span>Sobre</span></a></li>
+			<li><a href="#tab-3"><span>Teste</span></a></li>
 		</ul>
 
 			<div id="tab-1">
@@ -43,6 +44,9 @@ include_once '../biblioteca/IncludeFile.php';
 			</div>
 			<div id="tab-2">
 				Sobre
+			</div>
+			<div id="tab-3">
+				EJI
 			</div>
 
 		</div>
