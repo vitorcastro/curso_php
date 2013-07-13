@@ -3,3 +3,31 @@
 	background: black;
 	color: white;
 }
+
+#tarefas .ui-selecting { background: #FECA40; }
+#tarefas .ui-selected { background: #F39814; color: white; }
+
+.item{
+	background-color: #7777;
+	border: 1px dashed #333;
+	width: 100px;
+	height: 100px;
+}
+
+.tarefas{
+	background-color: #7777;
+	border: 1px dashed #333;
+	width: 100%;
+	height: auto;
+}
+
+.lixeira{
+	width: 100%;
+	height: 60px;
+	display: block;
+}
+
+.lixeiraMarcada{
+	background-color: black;
+	
+}

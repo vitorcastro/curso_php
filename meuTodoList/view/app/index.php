@@ -17,43 +17,46 @@ $tarefas = $facade->buscaTodasTarefaDoUsuario();
         <a id="fonteMax" class="btn">Aumentar letra</a>
       </div>
       <hr>
+      
+      <h2>Lixeira</h2>
+      <hr>
+      <div class="lixeira">
+      </div>
 
       <div class="row-fluid">
         <div class="span12">
         <a href="novaTarefa.php" class="btn btn-success btn-medium">Nova Tarefa</a>
         
 	<?php if ($tarefas) { ?>
-        <table class="table table-striped">
-	<thead>
-		<tr>
-			<td>Título</td>
-			<td>Prioridade</td>
-			<td>Categoria</td>
-			<td>Excluir</td>
-		</tr>
-	</thead>
-	
-	<?php foreach ($tarefas as $tarefa) { ?>
-	<tr>
-		<td><?php echo $tarefa->getTitulo(); ?></td>
-		<td><?php echo $facade->getPrioridadeById($tarefa->getPrioridade()); ?></td>
-		<td><?php echo $tarefa->categoria; ?></td>
-		
-		<td><a class="btn btn-danger" href="index.php?excluir=1&amp;id=<?php echo $tarefa->getId(); ?>"><i class="icon-remove icon-white"></i></a></td>
-		
-	</tr>
-	<?php } ?>
-</table>
+		<div class="tarefas">
+			<?php foreach ($tarefas as $tarefa) { ?>
+			<div class="item well">
+				<?php echo $tarefa->getTitulo(); ?>
+				<?php echo $facade->getPrioridadeById($tarefa->getPrioridade()); ?>
+				<?php echo $tarefa->categoria; ?>
+			</div>
+			<?php } ?>
+		</div>
 <br>
 <?php } else { ?>
 	<div class="alert alert-block" style="margin-top: 10px;">Não Existem Tarefas Cadastrados</div>
 <?php } ?>
-        
-        
-        
+	<?php if ($tarefas) { ?>
+	<div id="marcados">Selecionados: </div>
+		<ol id="tarefas">
+			<?php foreach ($tarefas as $tarefa) { ?>
+			<li value="<?php echo $tarefa->getId(); ?>">
+				<?php echo $tarefa->getTitulo(); ?>
+				<?php echo $facade->getPrioridadeById($tarefa->getPrioridade()); ?>
+				<?php echo $tarefa->categoria; ?>
+			</li>
+			<?php } ?>
+		</ol>
+<br>
+<?php } ?> 
+
         </div>
       </div>
-      
 <?php 
 IncludeFile::js('app.index.js');
 ?>

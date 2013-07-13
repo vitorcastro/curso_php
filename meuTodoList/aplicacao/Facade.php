@@ -218,6 +218,30 @@ class Facade
 		echo json_encode($arrayJSON);
 	}
 	
+	public function xmlCategorias()
+	{
+		$categoriaApp = new CategoriaApp();
+		$categorias = $categoriaApp->buscarTodos();
+		
+		$dom = new DOMDocument("1.0", "ISO-8859-1");
+		$dom->preserveWhiteSpace = false;
+		$dom->formatOutput = true;
+		$categoriasXML = $dom->createElement("categorias");
+		
+		foreach ($categorias as $categoria)
+		{
+			$categoriaXML = $dom->createElement("categoria");
+			$descricaoXML = $dom->createElement('descricao',$categoria->getDescricao());
+			
+			$categoriaXML->appendChild($descricaoXML);
+			$categoriasXML->appendChild($categoriaXML);
+		}
+		
+		$dom->appendChild($categoriasXML);
+		header("Content-Type: text/xml");
+		echo $dom->saveXML();
+	}
+	
 	public function buscarTotalTarefaUsuarioPorCategoria()
 	{
 		$categoriaApp = new CategoriaApp();

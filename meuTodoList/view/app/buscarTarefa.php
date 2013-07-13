@@ -60,6 +60,7 @@ $tarefas = $facade->realizarBuscaTarefas();
     <script type="text/javascript">
 	$().ready(function() {
 
+		/* usando jSON
 		var json = $.getJSON('_jSONCategorias.php', function(data) {
 
 			var categorias = [];
@@ -73,6 +74,27 @@ $tarefas = $facade->realizarBuscaTarefas();
 				source: categorias
 			});
 		});
+		*/
+
+		// usando XML
+		$.ajax({
+			url: "_xmlCategorias.php",
+			dataType: "xml",
+			success: function (xml){
+				var categorias = [];
+				var index = 0;
+
+				$(xml).find("categoria").each(function(){
+					categorias[index] = $(this).find("descricao").text();
+					index++;
+				});
+
+				$( "input[name=busca]").autocomplete({
+					source: categorias
+				});
+			},
+		});
+		
 
 	});
 
