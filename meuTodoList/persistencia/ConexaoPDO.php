@@ -8,19 +8,22 @@
 class ConexaoPDO
 {
 	// constantes definidas a partir das configurações de acesso ao banco de dados 
-	const HOST = 'localhost';
-	const DATA_BASE = 'meuTodoList';
-	const USER = 'root';
-	const PASSWORD = 'root';
+// 	const HOST = 'localhost';
+// 	const DATA_BASE = 'meuTodoList';
+// 	const USER = 'root';
+// 	const PASSWORD = 'root';
 	
 	private $conexao;
 
 	public function ConexaoPDO()
 	{
 		try {
+			$path = IncludeFile::getPath() . '/app.ini';
+			$config = parse_ini_file($path);
+			
 			// realizar a conexão com o banco de dados (new PDO)
 			// o encapsulamento é feito para posterior disponibilização da conexão para a classe DataAccessObject
-			$this->conexao = new PDO($this->getDsn(),self::USER,self::PASSWORD);
+			$this->conexao = new PDO($this->getDsn($config['host'],$config['base']),$config['usuario'],$config['senha']);
 		}
 		catch (PDOException $e) {
 			// tratamento de exceção
@@ -34,9 +37,9 @@ class ConexaoPDO
 		return $this->conexao;
 	}
 	
-	private function getDsn()
+	private function getDsn($host,$database)
 	{
-		return 'mysql:host=' . self::HOST . ';dbname=' . self::DATA_BASE;
+		return 'mysql:host=' . $host . ';dbname=' . $database;
 	}
 	
 	// Quando o objeto for retirado do servidor ou não estiver em uso, antes de ser descartado irá encerrar a conexão

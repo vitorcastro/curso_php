@@ -5,11 +5,13 @@ Seguranca::usuarioLogado();
 ?>
 <head>
 	<title>Meu Todo List</title>
+	<link rel="shortcut icon" href="../../styles/img/favicon.ico">
+
 	<link rel="stylesheet" href="../../styles/css/bootstrap.css">
 	<link rel="stylesheet" href="../../styles/css/bootstrap-responsive.min.css">
 	<link rel="stylesheet" type="text/css" href="../../styles/css/jquery.ui/jquery.ui.css">
-	<link rel="shortcut icon" href="../../styles/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="../../styles/css/estilo.css">
+	
 	<script type="text/javascript" src="../../styles/js/jquery2.0.2.js"></script>
 	<script type="text/javascript" src="../../styles/js/jquery.ui/jquery.ui.js"></script>
 	<script type="text/javascript">
@@ -17,7 +19,6 @@ Seguranca::usuarioLogado();
 		//$("#menu").menu();
 		//$("#menu").menu({position: {my: "center", at: "bottom+20"}});
 	});
-	
 	</script>
 	
 	
@@ -30,15 +31,15 @@ Seguranca::usuarioLogado();
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav" id="menu">
-                <li><a href="index.php">Minhas Tarefas</a>
+                <li id="1"><a href="index.php">Minhas Tarefas</a>
 <!--                 <ul> -->
 <!--                 	<li><a href="novaTarefa.php">Nova tarefa</a></li> -->
 <!--                 </ul> -->
                 
                 </li>
-                <li><a href="buscarTarefa.php">Buscar Tarefas</a></li>
-                <li><a href="estatistica.php">Estatísticas</a></li>
-                <li><a href="../encerrarSessao.php">Sair</a></li>
+                <li id="2"><a href="buscarTarefa.php">Buscar Tarefas</a></li>
+                <li id="3"><a href="estatistica.php">Estatísticas</a></li>
+                <li id="4"><a href="../encerrarSessao.php">Sair</a></li>
                 
               </ul>
             </div>

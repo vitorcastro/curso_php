@@ -34,16 +34,20 @@ $tarefas = $facade->buscaTodasTarefaDoUsuario();
 				<?php echo $tarefa->getTitulo(); ?>
 				<?php echo $facade->getPrioridadeById($tarefa->getPrioridade()); ?>
 				<?php echo $tarefa->categoria; ?>
+			
 			</div>
 			<?php } ?>
 		</div>
 <br>
+
+<input name="const" type="hidden" value="<?php echo 44; ?>">
+
 <?php } else { ?>
 	<div class="alert alert-block" style="margin-top: 10px;">Não Existem Tarefas Cadastrados</div>
 <?php } ?>
 	<?php if ($tarefas) { ?>
 	<div id="marcados">Selecionados: </div>
-		<ol id="tarefas">
+		<ol id="listaTarefas">
 			<?php foreach ($tarefas as $tarefa) { ?>
 			<li value="<?php echo $tarefa->getId(); ?>">
 				<?php echo $tarefa->getTitulo(); ?>
